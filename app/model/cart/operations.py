@@ -4,7 +4,7 @@ item_id INTEGER foreign key (items)
 amount INTEGER
 """
 
-from model.database_decorators import *
+from app.model.database_decorators import *
 
 
 @get_from_database
