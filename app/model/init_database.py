@@ -42,7 +42,8 @@ def init_database() -> None:
     create_session_table = '''
     CREATE TABLE IF NOT EXISTS session (
         session_hash TEXT PRIMARY KEY,
-        create_time REAL
+        create_time REAL,
+        last_visit REAL
     ); 
     '''
 

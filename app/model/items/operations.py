@@ -10,3 +10,5 @@ store_availability INTEGER
 local_availability INTEGER
 photo (?)
 """
+
+from app.model.database_decorators import *
