@@ -31,15 +31,23 @@ def init_database() -> None:
 
     create_cart_table = '''
     CREATE TABLE IF NOT EXISTS cart (
-        user_id INTEGER,
+        session_hash TEXT,
         item_id INTEGER,
         amount INTEGER,
-        FOREIGN KEY (user_id) REFERENCES users(user_id),
+        FOREIGN KEY (session_hash) REFERENCES session(session_hash),
         FOREIGN KEY (item_id) REFERENCES items(item_id)
     ); 
     '''
 
+    create_session_table = '''
+    CREATE TABLE IF NOT EXISTS session (
+        session_hash TEXT PRIMARY KEY,
+        create_time REAL
+    ); 
+    '''
+
     cursor.execute(create_users_table)
+    cursor.execute(create_session_table)
     cursor.execute(create_items_table)
     cursor.execute(create_cart_table)
 
@@ -51,6 +59,8 @@ if __name__ == "__main__":
     Path(DATABASE_FOLDER_PATH).mkdir(parents=True, exist_ok=True)
     try:
         os.remove(DATABASE_PATH)
+        print("Removed old database")
     except Exception:
         pass
     init_database()
+    print("Database created")

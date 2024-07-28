@@ -5,15 +5,8 @@
 }
 
 .cart {
-    background-image: url('/icons/cart_icon.png');
-    background-size: cover;
-    background-color: transparent;
-    border: none;
-    padding: 20px;
-
     position: absolute;
     right: 2%;
-
     border-radius: 10%;
     transition: box-shadow 0.3s ease;
 }

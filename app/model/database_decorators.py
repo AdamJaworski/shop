@@ -17,7 +17,7 @@ def on_database_operation(func):
 
 def get_from_database(func):
     def wrapper(*args, **kwargs):
-        db = sqlite3.connect('database/data.db')
+        db = sqlite3.connect(DATABASE_PATH)
         cursor = db.cursor()
         try:
             result = func(cursor, *args, **kwargs)
