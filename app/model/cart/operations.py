@@ -14,5 +14,5 @@ def get_user_cart(cursor, user_hash):
 
 
 @on_database_operation
-def add_to_cart(cursor, item_id, amount, user_hash):
+def add_to_cart_database(cursor, item_id, amount, user_hash):
     cursor.execute('INSERT INTO cart (session_hash, item_id, amount) VALUES (?, ?, ?)', (user_hash, item_id, amount))
