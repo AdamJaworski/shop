@@ -19,8 +19,8 @@ def add_to_cart_database(cursor, item_id, amount, user_hash):
 
 
 @on_database_operation
-def update_amount(cursor, item_id, amount, user_hash):
-    cursor.execute('UPDATE cart SET amount = ? WHERE session_hash = ? AND item_id = ?', (amount, user_hash, item_id))
+def update_amount(cursor, item_id, new_amount, user_hash):
+    cursor.execute('UPDATE cart SET amount = ? WHERE session_hash = ? AND item_id = ?', (new_amount, user_hash, item_id))
 
 
 @get_from_database
@@ -39,3 +39,8 @@ def get_current_item_amount_in_cart(cursor, user_hash, item_id):
         raise UserWarning('More then one same item entry in database')
 
     return output[0][0]
+
+
+@on_database_operation
+def remove_from_cart_database(cursor, user_hash, item_id):
+    cursor.execute('DELETE FROM cart WHERE session_hash = ? AND item_id = ?', (user_hash, item_id))
