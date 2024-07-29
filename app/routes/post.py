@@ -25,6 +25,10 @@ async def get_cart(request: Request):
 
 @router.post("/add_to_cart")
 async def add_to_cart(request: Request, item_id: str, amount: int):
+    """
+    Adds item by id to user cart. If user wants to increase amount of items in his cart, this should be called with
+    amount user wants to add
+    """
     cookie_value = request.cookies.get('cart_cookie')
 
     if not cookie_value:
@@ -54,6 +58,10 @@ async def add_to_cart(request: Request, item_id: str, amount: int):
 
 @router.post("/remove_from_cart")
 async def add_to_cart(request: Request, item_id: str, amount: int):
+    """
+    Removes item by id from user cart. If user wants to decrease amount of items in his cart, this should be called with
+    amount user wants to remove. If amount of items will be <= 0, then item will be removed
+    """
     cookie_value = request.cookies.get('cart_cookie')
 
     if not cookie_value:

@@ -27,5 +27,13 @@ async def root(request: Request) -> HTMLResponse:
     return response
 
 
+@router.get("/search", response_class=HTMLResponse)
+async def search(request: Request, query: str):
+    with open(HTML_DIR + "/search.html") as f:
+        response = HTMLResponse(content=f.read(), status_code=200)
+
+    return response
+
+
 if __name__ == "__main__":
     pass

@@ -21,3 +21,4 @@ def get_new_session_hash() -> str:
     _hash = generate_new_session_hash()
     add_hash_to_database(_hash, time.time(), time.time())
     return _hash
+

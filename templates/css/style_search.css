@@ -1,0 +1,17 @@
+.sign {
+    font-size: 250%;
+    padding: 15px;
+    color: rgba(255, 255, 255, .55);
+}
+
+.cart {
+    position: absolute;
+    right: 2%;
+    border-radius: 10%;
+    transition: box-shadow 0.3s ease;
+}
+
+.cart:hover, .cart:focus {
+    box-shadow: 0 0 1px 5px rgba(255, 255, 255, 0.55);
+
+}
