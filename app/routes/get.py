@@ -12,7 +12,7 @@ router = APIRouter()
 
 @router.get("/", response_class=HTMLResponse)
 async def root(request: Request) -> HTMLResponse:
-    with open(HTML_DIR + "/index.html") as f:
+    with open(HTML_DIR + "/index.html", encoding='utf-8') as f:
         response = HTMLResponse(content=f.read(), status_code=200)
 
     cookie_value = request.cookies.get('cart_cookie')
@@ -30,7 +30,7 @@ async def root(request: Request) -> HTMLResponse:
 
 @router.get("/search", response_class=HTMLResponse)
 async def search(request: Request):
-    with open(HTML_DIR + "/search.html") as f:
+    with open(HTML_DIR + "/search.html", encoding='utf-8') as f:
         response = HTMLResponse(content=f.read(), status_code=200)
 
     return response

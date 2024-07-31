@@ -18,7 +18,7 @@ def create_route_for_item(item_id):
         file_path = os.path.join(HTML_DIR, f"{item_id}.html")
         if not os.path.isfile(file_path):
             return HTMLResponse(content="Item not found", status_code=404)
-        with open(file_path, "r") as f:
+        with open(file_path, "r", encoding='utf-8') as f:
             response = HTMLResponse(content=f.read(), status_code=200)
         return response
 
