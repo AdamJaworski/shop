@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Request, Response, HTTPException
+from fastapi.responses import JSONResponse
 from app.model.cart.operations import *
+from app.model.items.operations import search_item_by_name, insert_into_items
 
 router = APIRouter()
 
@@ -20,7 +22,7 @@ async def get_cart(request: Request):
         } for item, amount in user_cart
     ]
 
-    return {"user_cart": user_cart}
+    return JSONResponse(content={"user_cart": user_cart}, status_code=200)
 
 
 @router.post("/add_to_cart")
@@ -50,7 +52,7 @@ async def add_to_cart(request: Request, item_id: str, amount: int):
         else:
             add_to_cart_database(item_id, amount, cookie_value)
 
-        return {'status': True}
+        return JSONResponse(content={'status': True}, status_code=200)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
@@ -81,7 +83,28 @@ async def add_to_cart(request: Request, item_id: str, amount: int):
         else:
             update_amount(item_id, current_amount - amount, cookie_value)
 
-        return {'status': True}
+        return JSONResponse(content={'status': True}, status_code=200)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
+
+
+@router.post("/search")
+async def search(request: Request, query: str):
+    try:
+        return JSONResponse(content=search_item_by_name(query), status_code=200)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
+
+
+@router.post("/debug/add_item")
+async def add_item(request: Request, item_name: str, description: str, sku: str, buy_price: float, sell_price: float,
+                   discount_price: float, store_availability: int, local_availability: int):
+    try:
+        insert_into_items(item_name, description, sku, buy_price, sell_price,
+                          discount_price, store_availability, local_availability)
+        return JSONResponse(content={'status': True}, status_code=200)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")

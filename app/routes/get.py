@@ -1,4 +1,5 @@
 import time
+import uuid
 from datetime import timedelta
 from app.auth.auth import get_new_session_hash, is_hash_in_database, set_last_visit
 from fastapi import APIRouter, Request, Response
@@ -28,7 +29,7 @@ async def root(request: Request) -> HTMLResponse:
 
 
 @router.get("/search", response_class=HTMLResponse)
-async def search(request: Request, query: str):
+async def search(request: Request):
     with open(HTML_DIR + "/search.html") as f:
         response = HTMLResponse(content=f.read(), status_code=200)
 
@@ -36,4 +37,4 @@ async def search(request: Request, query: str):
 
 
 if __name__ == "__main__":
-    pass
+    print(uuid.uuid4())
