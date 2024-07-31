@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Response
-from app.model.items.operations import get_all_items_name_id
+from app.model.items.operations import get_all_items_name_id, get_item_by_id
 from fastapi.responses import HTMLResponse
 from config import *
 import os
@@ -26,7 +26,6 @@ def create_route_for_item(item_id):
 
 
 #  requires dynamic root deploy to work
-
 # def add_item_route_function(item_id):
 #     item = get_item_by_id(item_id)
 #     name = '-'.join(item['item_name'].split(' '))

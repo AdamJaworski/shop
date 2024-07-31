@@ -109,4 +109,3 @@ async def add_item(request: Request, item_name: str, description: str, sku: str,
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
-
