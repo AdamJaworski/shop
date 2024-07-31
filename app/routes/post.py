@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Request, Response, HTTPException
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import JSONResponse
 from app.model.cart.operations import *
-from app.model.items.operations import search_item_by_name, insert_into_items
-
+from app.model.items.operations import insert_into_items, search_in_database, get_item_id_by_name
 router = APIRouter()
 
 
@@ -92,7 +91,7 @@ async def add_to_cart(request: Request, item_id: str, amount: int):
 @router.post("/search")
 async def search(request: Request, query: str):
     try:
-        return JSONResponse(content=search_item_by_name(query), status_code=200)
+        return JSONResponse(content=search_in_database(query), status_code=200)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
@@ -100,11 +99,14 @@ async def search(request: Request, query: str):
 
 @router.post("/debug/add_item")
 async def add_item(request: Request, item_name: str, description: str, sku: str, buy_price: float, sell_price: float,
-                   discount_price: float, store_availability: int, local_availability: int):
+                   discount_price: float, store_availability: int, local_availability: int, tags: str):
     try:
         insert_into_items(item_name, description, sku, buy_price, sell_price,
-                          discount_price, store_availability, local_availability)
-        return JSONResponse(content={'status': True}, status_code=200)
+                          discount_price, store_availability, local_availability, tags.lower())
+
+        item_id = get_item_id_by_name(item_name)
+        return JSONResponse(content={'item_id': item_id}, status_code=201)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error: {e}, occurred")
+

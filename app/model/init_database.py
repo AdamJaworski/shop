@@ -25,7 +25,8 @@ def init_database() -> None:
         sell_price REAL,
         discount_price REAL,
         store_availability INTEGER,
-        local_availability INTEGER
+        local_availability INTEGER,
+        tags TEXT
     );
     '''
 
