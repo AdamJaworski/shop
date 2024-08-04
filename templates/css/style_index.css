@@ -1,17 +1,54 @@
-.sign {
-    font-size: 250%;
-    padding: 15px;
-    color: rgba(255, 255, 255, .55);
+.main-area {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
 }
 
-.cart {
-    position: absolute;
-    right: 2%;
-    border-radius: 10%;
-    transition: box-shadow 0.3s ease;
+.page-text {
+    color: rgb(243, 246, 246);
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: left;
+    height: 200px;
 }
 
-.cart:hover, .cart:focus {
-    box-shadow: 0 0 1px 5px rgba(255, 255, 255, 0.55);
+.one {
+    font-family: 'Roboto', sans-serif;
+}
 
+.two {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.three {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.four {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.five {
+    font-family: 'Raleway', sans-serif;
+}
+
+.six {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.seven {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.eight {
+    font-family: 'Audiowide', sans-serif;
+}
+
+.nine {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.ten {
+    font-family: 'Ubuntu', sans-serif;
 }

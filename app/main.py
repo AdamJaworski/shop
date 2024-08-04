@@ -25,6 +25,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan) #
 
 app.mount("/css", StaticFiles(directory=CSS_DIR), name="css")
+app.mount("/svg", StaticFiles(directory=SVG_DIR), name="svg")
 
 app.include_router(get)
 app.include_router(post)

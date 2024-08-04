@@ -30,6 +30,7 @@ def get_item_by_id(cursor, item_id):
     print(f"get_item_by_id:{item}")
     return {'item_name': item[0], 'description': item[1], 'buy_price': item[2]}
 
+
 @on_database_operation
 def insert_into_items(cursor, item_name, description, sku, buy_price, sell_price,
                       discount_price, store_availability, local_availability, tags):

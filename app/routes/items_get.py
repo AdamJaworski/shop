@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Response
-from app.model.items.operations import get_all_items_name_id, get_item_by_id
+from app.model.items.operations import get_all_items_name_id
 from fastapi.responses import HTMLResponse
 from config import *
 import os

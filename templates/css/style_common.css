@@ -1,14 +1,18 @@
 html, body {
     width: 100%;
-    height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 
-.top-bar {
-    width: 100%;
-    height: 8%;
-    background: #212529;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
